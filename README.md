@@ -6,7 +6,7 @@ This project presents a full end-to-end data warehousing and analytics ecosystem
 ## 🏗️ Data Architecture
 
 The data architecture for this project follows Medallion Architecture **Bronze**, **Silver**, and **Gold** layers:
-![Data Architecture](docs/data_architecture.png)
+![Data Architecture](DWH project/docs/data_architecture.png)
 
 1. **Bronze Layer**: Stores raw data as-is from the source systems. Data is ingested from CSV Files into SQL Server Database.
 2. **Silver Layer**: This layer includes data cleansing, standardization, and normalization processes to prepare data for analysis.
@@ -45,15 +45,16 @@ data-warehouse-project/
 │   ├── data_models.drawio              # Draw.io file for data models (star schema)
 │   ├── naming-conventions.md           # Consistent naming guidelines for tables, columns, and files
 │
-├── scripts/                            # SQL scripts for ETL and transformations
+├── sql_scripts/                        # SQL scripts for ETL and transformations
 │   ├── bronze/                         # Scripts for extracting and loading raw data
 │   ├── silver/                         # Scripts for cleaning and transforming data
 │   ├── gold/                           # Scripts for creating analytical models
 │   ├── intial_database.sql             # Scripts for creating database and schemas
 │
 ├── tests/                              # Test scripts and quality files
-│
-└── README.md                           # Project overview and instructions
+│   ├── quality_checks_gold.sql         # Test scripts to check data quality in the gold layer
+│   ├── quality_checks_silver.sql       # Test scripts to check data quality in the silver layer
+
 ```
 ---
 
