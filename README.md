@@ -45,15 +45,16 @@ data-warehouse-project/
 │   ├── data_models.drawio              # Draw.io file for data models (star schema)
 │   ├── naming-conventions.md           # Consistent naming guidelines for tables, columns, and files
 │
-├── scripts/                            # SQL scripts for ETL and transformations
+├── sql_scripts/                        # SQL scripts for ETL and transformations
 │   ├── bronze/                         # Scripts for extracting and loading raw data
 │   ├── silver/                         # Scripts for cleaning and transforming data
 │   ├── gold/                           # Scripts for creating analytical models
 │   ├── intial_database.sql             # Scripts for creating database and schemas
 │
 ├── tests/                              # Test scripts and quality files
-│
-└── README.md                           # Project overview and instructions
+│   ├── quality_checks_gold.sql         # Test scripts to check data quality in the gold layer
+│   ├── quality_checks_silver.sql       # Test scripts to check data quality in the silver layer
+
 ```
 ---
 
