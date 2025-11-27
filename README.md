@@ -65,6 +65,17 @@ data-warehouse-project/
 
 ## The EDA projects
 
+### 📖 Project Overview
+
+This project involves:
+
+1. **Data Warehouse Design**: Creating a structured analytics database with **dimension** and **fact** tables in the `gold` schema.  
+2. **Data Integration**: Importing and transforming customer, product, and sales datasets into the warehouse.  
+3. **Metrics & KPIs**: Aggregating key business metrics like total sales, orders, and customer activity.  
+4. **Advanced Analytics**: Performing segmentation, ranking, cumulative, and time-based analyses with SQL `(PostgreSQL)` reports for actionable insights.
+
+
+
 ### 📂 Project Structure
 
 ```
