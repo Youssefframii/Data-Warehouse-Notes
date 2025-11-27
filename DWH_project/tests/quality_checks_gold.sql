@@ -13,12 +13,11 @@ Usage Notes:
     - Investigate and resolve any discrepancies found during the checks.
 ===============================================================================
 */
-
 -- ====================================================================
--- 👤 Checking 'gold.dim_customers'
+-- Checking 'gold.dim_customers'
 -- ====================================================================
--- Check for Uniqueness of Customer Key in gold.dim_customers
--- Expectation: No results (customer_key is generated using ROW_NUMBER() and should be unique)
+-- Check for uniqueness of customer_key in gold.dim_customers
+-- Expectation: No results if all keys are unique
 SELECT 
     customer_key,
     COUNT(*) AS duplicate_count
@@ -26,12 +25,11 @@ FROM gold.dim_customers
 GROUP BY customer_key
 HAVING COUNT(*) > 1;
 
-
----
-
--- 🛒 Checking 'gold.dim_products'
--- Check for Uniqueness of Product Key in gold.dim_products
--- Expectation: No results (product_key is generated using ROW_NUMBER() and should be unique)
+-- ====================================================================
+-- Checking 'gold.dim_products'
+-- ====================================================================
+-- Check for uniqueness of product_key in gold.dim_products
+-- Expectation: No results if all keys are unique
 SELECT 
     product_key,
     COUNT(*) AS duplicate_count
@@ -39,22 +37,16 @@ FROM gold.dim_products
 GROUP BY product_key
 HAVING COUNT(*) > 1;
 
-
----
-
--- 🔗 Checking 'gold.fact_sales' Connectivity
--- Check the data model connectivity between fact and dimensions
--- Expectation: No results (indicates that all foreign keys in the fact table successfully map to the dimension tables)
-SELECT 
-    f.order_number,
-    f.product_key AS fact_product_key,
-    f.customer_key AS fact_customer_key,
-    p.product_key AS dim_product_key,
-    c.customer_key AS dim_customer_key
+-- ====================================================================
+-- Checking 'gold.fact_sales' connectivity
+-- ====================================================================
+-- Check if fact_sales properly references dimension tables
+-- Any NULL in the join indicates missing dimension record
+SELECT f.*
 FROM gold.fact_sales f
 LEFT JOIN gold.dim_customers c
-ON c.customer_key = f.customer_key
+    ON c.customer_key = f.customer_key
 LEFT JOIN gold.dim_products p
-ON p.product_key = f.product_key
--- Records returned here represent data integrity failures (missing dimension records for a given fact key)
-WHERE p.product_key IS NULL OR c.customer_key IS NULL;
+    ON p.product_key = f.product_key
+WHERE c.customer_key IS NULL
+   OR p.product_key IS NULL;
