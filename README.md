@@ -4,7 +4,9 @@ This project presents a full end-to-end data warehousing and analytics ecosystem
 
 ---
 
-## 🏗️ Data Architecture
+## The Data Warehouse project
+
+### 🏗️ Data Architecture
 
 The data architecture for this project follows Medallion Architecture **Bronze**, **Silver**, and **Gold** layers:
 ![Data Architecture](DWH_project/docs/data_architecture.png)
@@ -15,7 +17,7 @@ The data architecture for this project follows Medallion Architecture **Bronze**
 
 ---
 
-## 📖 Project Overview
+### 📖 Project Overview
 
 This project involves:
 
@@ -24,7 +26,7 @@ This project involves:
 3. **Data Modeling**: Developing fact and dimension tables optimized for analytical queries.
 4. **Analytics & Reporting**: Creating SQL-based `(PostgreSQL)` reports and dashboards for actionable insights.
 
-## 📂 Repository Structure
+### 📂 Project Structure
 
 ```
 data-warehouse-project/
@@ -57,6 +59,69 @@ data-warehouse-project/
 │   ├── quality_checks_gold.sql         # Test scripts to check data quality in the gold layer
 │   ├── quality_checks_silver.sql       # Test scripts to check data quality in the silver layer
 
+```
+
+---
+
+## The EDA projects
+
+### 📂 Project Structure
+
+```
+sql-data-analytics-project/
+│
+├── datasets/
+│   ├── csv-files/
+│   │   ├── **Bronze Layer (Raw/Staging Data)**
+│   │   │   ├── bronze.crm_cust_info.csv
+│   │   │   ├── bronze.crm_prd_info.csv
+│   │   │   ├── bronze.crm_sales_details.csv
+│   │   │   ├── bronze.erp_cust_az12.csv
+│   │   │   ├── bronze.erp_loc_a101.csv
+│   │   │   ├── bronze.erp_px_cat_g1v2.csv
+│   │   │
+│   │   ├── **Silver Layer (Cleaned/Integrated Data)**
+│   │   │   ├── silver.crm_cust_info.csv
+│   │   │   ├── silver.crm_prd_info.csv
+│   │   │   ├── silver.crm_sales_details.csv
+│   │   │   ├── silver.erp_cust_az12.csv
+│   │   │   ├── silver.erp_loc_a101.csv
+│   │   │   ├── silver.erp_px_cat_g1v2.csv
+│   │   │
+│   │   ├── **Gold Layer (Analytical Data Models)**
+│   │   │   ├── gold.dim_customers.csv
+│   │   │   ├── gold.dim_products.csv
+│   │   │   ├── gold.fact_sales.csv
+│   │   │   ├── gold.report_customers.csv
+│   │   │   ├── gold.report_products.csv
+│   │   │
+│   ├── DataWarehouseAnalytics.bak           # Database backup file
+│
+├── docs/                                     # Project documentation
+│   ├── Project Roadmap.pdf
+│   ├── Project Roadmap.png
+│   ├── Project_Notes_Sketches.pdf
+│
+├── scripts/                                  # SQL scripts for setup and analysis
+│   ├── 00_init_database.sql                 # Database initialization/setup
+│   ├── **Data Exploration Scripts**
+│   │   ├── 01_database_exploration.sql
+│   │   ├── 02_dimensions_exploration.sql
+│   │   ├── 03_date_range_exploration.sql
+│   │   ├── 04_measures_exploration.sql
+│   │
+│   ├── **Analytical Scripts**
+│   │   ├── 05_magnitude_analysis.sql
+│   │   ├── 06_ranking_analysis.sql
+│   │   ├── 07_change_over_time_analysis.sql
+│   │   ├── 08_cumulative_analysis.sql
+│   │   ├── 09_performance_analysis.sql
+│   │   ├── 10_data_segmentation.sql
+│   │   ├── 11_part_to_whole_analysis.sql
+│   │
+│   ├── **Reporting Scripts**
+│   │   ├── 12_report_customers.sql
+│   │   ├── 13_report_products.sql
 ```
 
 ---
